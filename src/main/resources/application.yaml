@@ -1,0 +1,20 @@
+quarkus:
+  application:
+    name: atm-adapter
+  log:
+    console:
+      json:
+        pretty-print: true
+      format: "%d{HH:mm:ss} %-5p [%X{X-Correlation-ID}] %c - %m%n"
+  mongodb:
+    connection-string: mongodb://localhost:27017
+    database: atm_data_db
+  otel:
+    metrics:
+      enabled: true
+    exporter:
+      otlp:
+        enabled: true
+        protocol: grpc
+        endpoint: http://localhost:4317
+

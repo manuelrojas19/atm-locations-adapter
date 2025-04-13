@@ -1,0 +1,32 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  # Exporter for sending traces using OTLP (OpenTelemetry Protocol) over gRPC
+  otlp:
+    endpoint: jaeger:4317       # Jaeger backend address to receive traces via OTLP gRPC
+    tls:
+      insecure: true
+
+  # Exporter for exposing metrics in Prometheus format
+  prometheus:
+    endpoint: "0.0.0.0:9090"    # The OpenTelemetry Collector will expose metrics on this endpoint
+    # Prometheus will scrape them from here (usually at /metrics)
+
+service:
+  pipelines:
+    metrics:
+      receivers: [ otlp ]
+      exporters: [ prometheus ]
+    traces:
+      receivers: [ otlp ]
+      exporters: [ otlp ]
+
+  telemetry:
+    logs:
+      level: "debug"
