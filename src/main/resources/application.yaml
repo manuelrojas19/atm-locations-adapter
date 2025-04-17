@@ -4,14 +4,14 @@ quarkus:
   log:
     console:
       json:
-        pretty-print: true
+        pretty-print: false
       format: "%d{HH:mm:ss} %-5p [%X{X-Correlation-ID}] %c - %m%n"
   mongodb:
     connection-string: mongodb://localhost:27017
     database: atm_data_db
   otel:
     metrics:
-      enabled: true
+      enabled: trueI
     exporter:
       otlp:
         enabled: true
