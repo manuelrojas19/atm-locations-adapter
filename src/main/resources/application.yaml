@@ -1,15 +1,6 @@
 quarkus:
   application:
     name: atm-adapter
-  secretsmanager:
-    endpoint-override: http://localhost:4566
-    aws:
-      region: us-east-1
-      credentials:
-        static-provider:
-          access-key-id: test-key
-          secret-access-key: test-secret
-        type: static
   log:
     console:
       format: "%d{HH:mm:ss} %-5p [%X{X-Correlation-ID}] %c - %m%n"
@@ -24,5 +15,13 @@ quarkus:
         enabled: true
         protocol: grpc
         endpoint: http://localhost:4317
-
+  secretsmanager:
+    endpoint-override: http://localhost:4566
+    aws:
+      region: us-east-1
+      credentials:
+        static-provider:
+          access-key-id: test-key
+          secret-access-key: test-secret
+        type: static
 

@@ -12,7 +12,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.regex.Pattern;
 
 @ApplicationScoped
-public class  AtmRepository implements ReactivePanacheMongoRepository<AtmEntity> {
+public class AtmRepository implements ReactivePanacheMongoRepository<AtmEntity> {
 
   private Collation caseInsensitiveCollation() {
     return Collation.builder().locale("en").collationStrength(CollationStrength.SECONDARY).build();
